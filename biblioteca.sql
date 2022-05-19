@@ -14,9 +14,9 @@ idade INTEGER
 CREATE TABLE emprestimo (
 id serial primary key,
 id_do_livro INTEGER UNIQUE NOT NULL,
-FOREIGN key (id_do_livro) REFERENCES livros(id),
+FOREIGN_key (id_do_livro) REFERENCES livros(id),
 id_do_usuario INTEGER UNIQUE NOT NULL,
-FOREIGN key (id_do_usuario) REFERENCES usuarios(id),
+FOREIGN_key (id_do_usuario) REFERENCES usuarios(id),
 datae DATE
 );
 
@@ -44,15 +44,16 @@ insert into usuario (nome, idade) values ('Kaue A.', 20);
 insert into usuario (nome, idade) values ('Breno A.', 21);
 
 INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (1,2, '2022-10-22');
-INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (5,6, '2022-10-22');
-INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (6,5, '2022-10-22');
-INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (9,3, '2022-10-22');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (5,6, '2022-10-15');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (6,5, '2022-10-12');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (9,3, '2022-10-02');
 
-SELECT l.titulo as TiTulo_do_Livro, u.nome as Nome, e.datadoemprestimos from emprestimos as e
+SELECT l.titulo as Titulo_do_Livro, u.nome as Nome, e.datadoemprestimos from emprestimos as e
+
 join usuario as u
-on u.nome== e.id_do_usuario;
+on u.nome= e.id_do_usuario;
 
 join livro as l
-on l.titulo== e.id_do_livro;
+on l.titulo= e.id_do_livro;
 
 SELECT emprestimo WHERE u.idade <18;
