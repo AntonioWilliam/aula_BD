@@ -14,9 +14,9 @@ idade INTEGER
 CREATE TABLE emprestimo (
 id serial primary key,
 id_do_livro INTEGER UNIQUE NOT NULL,
-FOREIGN_key (id_do_livro) REFERENCES livros(id),
+FOREIGN key (id_do_livro) REFERENCES livro(id),
 id_do_usuario INTEGER UNIQUE NOT NULL,
-FOREIGN_key (id_do_usuario) REFERENCES usuarios(id),
+FOREIGN key (id_do_usuario) REFERENCES usuario(id),
 datae DATE
 );
 
@@ -43,12 +43,15 @@ insert into usuario (nome, idade) values ('Igor L.', 20);
 insert into usuario (nome, idade) values ('Kaue A.', 20);
 insert into usuario (nome, idade) values ('Breno A.', 21);
 
-INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (1,2, '2022-10-22');
-INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (5,6, '2022-10-15');
-INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (6,5, '2022-10-12');
-INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (9,3, '2022-10-02');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (1,2, '2022-07-22');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (5,6, '2022-08-15');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (6,5, '2022-12-12');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (9,3, '2022-06-02');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (7,4, '2022-05-15');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (2,7, '2022-06-12');
+INSERT into emprestimo (id_do_livro, id_do_usuario, datae) VALUES (8,1, '2022-10-02');
 
-SELECT l.titulo as Titulo_do_Livro, u.nome as Nome, e.datadoemprestimos from emprestimos as e
+SELECT l.titulo as Titulo_do_Livro, u.nome as Nome, e.datae from emprestimos as e
 
 join usuario as u
 on u.nome= e.id_do_usuario;
@@ -56,4 +59,4 @@ on u.nome= e.id_do_usuario;
 join livro as l
 on l.titulo= e.id_do_livro;
 
-SELECT emprestimo WHERE u.idade <18;
+SELECT * from e WHERE e.datae BETWEEN '2022-8-10' AND '2022-10-10';
